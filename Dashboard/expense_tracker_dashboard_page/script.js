@@ -6,6 +6,14 @@ let score=document.querySelector('.score');
 let container=document.querySelector('.container');
 let playerList=[];
 let expenseChart;
+// Select form and result elements
+const taxForm = document.getElementById("taxForm");
+const totalIncomeDisplay = document.getElementById("totalIncome");
+const taxRateDisplay = document.getElementById("taxRate");
+const taxPayableDisplay = document.getElementById("taxPayable");
+const amountLeftDisplay = document.getElementById("amountLeft");
+
+
 button.addEventListener('click',function(e){
     e.preventDefault();
     if(fname.value=="" || lname.value=="" || score.value==""|| country.value=="")
@@ -87,6 +95,7 @@ function updatedata(){
     // main.style.borderTopRightRadius="100px";
     // main.style.borderBottomRightRadius="100px";
     main.style.width="94%";
+    // main.style.height="500px";
     main.style.padding="30px 10px";
     main.style.margin="15px";
     main.style.color="white";
@@ -176,3 +185,48 @@ function renderChart() {
         }
     });
 }
+
+
+
+
+// Define tax thresholds and rates
+const taxBrackets = [
+    { threshold: 1000000, rate: 20 },
+    { threshold: 700000, rate: 15 },
+    { threshold: 500000, rate: 10 },
+    { threshold: 300000, rate: 5 },
+];
+
+// Event listener for form submission
+taxForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Get income value
+    const income = parseFloat(document.getElementById("income").value);
+
+    // Calculate tax rate and payable tax
+    let taxRate = 0;
+    for (const bracket of taxBrackets) {
+        if (income > bracket.threshold) {
+            taxRate = bracket.rate;
+            break;
+        }
+    }
+    const taxPayable = (income * taxRate) / 100;
+    const amountLeft = income - taxPayable;
+
+    // Update UI with calculated values
+    totalIncomeDisplay.textContent = income.toFixed(2);
+    taxRateDisplay.textContent = taxRate;
+    taxPayableDisplay.textContent = taxPayable.toFixed(2);
+    amountLeftDisplay.textContent = amountLeft.toFixed(2);
+});
+
+
+
+async function fetchRates() {
+    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    const data = await response.json();
+    conversionRates = data.rates; // Update rates dynamically
+}
+fetchRates();

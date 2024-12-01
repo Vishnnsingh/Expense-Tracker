@@ -10,23 +10,24 @@
   </head>
   <body>
     <header>
-      <a href=""><h2>Daily Finance Management</h2></a>
-      <a href="">Expense Tracker</a>
-      <a href="">Data Visualization</a>
-      <a href=""></a>
-      <a href="">Taxex Calculator</a>
-      <div>toggle</div>
+      <h2>Daily Finance Management</h2>
+      <!-- <a href=""></a> -->
+      <a href="#bb">Expense Tracker</a>
+      <a href="#cc">Data Visualization</a>
+      <!-- <a href="">Converter Currency</a> -->
+      <a href="#tt">Taxes Calculator</a>
+      <!-- <div>toggle</div> -->
     </header>
-
+    
     <div id="bb">
       <h1>Expense Tracker</h1>
 
-      <form action="">
+      <form id="hh" action="">
         <input type="text" class="fname" placeholder="Description" />
-        <input type="number" class="score" placeholder="amount" />
-        <input type="text" class="lname" placeholder="items name" />
+        <input type="number" class="score" placeholder="Amount" />
+        <input type="Text" class="lname" placeholder="items name" />
         <select name="" class="country">
-          <option value="" selected>Items</option>
+          <option value="" selected>Category</option>
           <option value="Utilitis">Utilitis</option>
           <option value="Entertainment">Entertainment</option>
           <option value="Food">Food</option>
@@ -34,20 +35,78 @@
           <option value="Medical">Medical</option>
         </select>
 
-        <button>Add</button>
+        <button id="bbs">Add</button>
       </form>
       <div class="container">
         <div class="total-amount">Total: ₹0</div>
       </div>
     </div>
     <!-- Canvas for Polar Area Chart -->
+
+  
     <div id="cc">
-        <h1>Data Visualization</h1>
+      <h1>Data Visualization</h1>
       <div id="ccs" style="margin-top: 20px">
-        
         <canvas id="expenseChart"></canvas>
       </div>
     </div>
+  
+    <section id="tt">
+      <div id="ttd" >
+        <h1>Taxes Calculator</h1>
+        <div>
+          <form id="taxForm">
+            <label for="income">Enter your total income: </label>
+            <input
+              type="number"
+              id="income"
+              placeholder="Enter your income"
+              required
+            />
+            
+            <button type="submit">Calculate Tax</button>
+          </form>
+  
+          <div id="result">
+            <p>Total Income: ₹<span id="totalIncome">0</span></p>
+            <p>Tax Rate: <span id="taxRate">0</span>%</p>
+  
+            <h3>Income Threshold</h3>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Income Threshold</th>
+                  <th>Tax Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Income above ₹1,000,000</td>
+                  <td>20%</td>
+                </tr>
+                <tr>
+                  <td>Income above ₹700,000</td>
+                  <td>15%</td>
+                </tr>
+                <tr>
+                  <td>Income above ₹500,000</td>
+                  <td>10%</td>
+                </tr>
+                <tr>
+                  <td>Income above ₹300,000</td>
+                  <td>5%</td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <p>Tax to Pay: ₹<span id="taxPayable">0</span></p>
+            <p>Amount left after tax: ₹<span id="amountLeft">0</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
     <script src="./script.js"></script>
   </body>
 </html>
+
