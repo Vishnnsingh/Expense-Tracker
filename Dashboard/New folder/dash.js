@@ -1,11 +1,11 @@
-let button=document.querySelector('button');
+let button=document.querySelector('#bbs');
 let fname=document.querySelector('.fname');
 let lname=document.querySelector('.lname');
 let country=document.querySelector('.country');
 let score=document.querySelector('.score');
 let container=document.querySelector('.container');
 let playerList=[];
-let expenseChart;
+// let expenseChart;
 // Select form and result elements
 const taxForm = document.getElementById("taxForm");
 const totalIncomeDisplay = document.getElementById("totalIncome");
@@ -144,6 +144,8 @@ function updatedata(){
 }
 
 // Render Polar Area Chart
+// Declare expenseChart only if it is not already declared
+let expenseChart; // Declare globally if not already defined
 
 function renderChart() {
     const categories = ["Utilitis", "Entertainment", "Food", "Study", "Medical"];
@@ -153,13 +155,17 @@ function renderChart() {
             .reduce((sum, player) => sum + player.score, 0);
     });
 
-    const ctx = document.getElementById('expenseChart').getContext('2d');
+    const ctx = document.getElementById('expenseChart');
+    if (!ctx) {
+        console.error("Canvas element with id 'expenseChart' not found.");
+        return;
+    }
 
     if (expenseChart) {
         expenseChart.destroy(); // Destroy previous chart before rendering a new one
     }
 
-    expenseChart = new Chart(ctx, {
+    expenseChart = new Chart(ctx.getContext('2d'), { // Ensure context is fetched correctly
         type: 'polarArea',
         data: {
             labels: categories,
@@ -186,7 +192,6 @@ function renderChart() {
         }
     });
 }
-
 
 
 

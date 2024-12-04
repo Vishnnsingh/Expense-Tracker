@@ -37,12 +37,22 @@ margin-left: 5px;
 
 }
 
+.navebar a {
+  text-decoration: none;
+  color:#052328;
+  text-transform: capitalize;
+}
 .navebar ul li a {
   text-decoration: none;
   color:#052328;
   text-transform: capitalize;
 }
 
+.content div button a{
+  text-decoration: none;
+  color:#052328;
+  text-transform: capitalize;
+}
 .navebar ul li::after{
   content: '';
   height: 2px;

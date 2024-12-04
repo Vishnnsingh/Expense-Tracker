@@ -3,6 +3,7 @@ body, h1, table, input {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 
 /* Styling for the heading */
@@ -21,6 +22,12 @@ body, h1, table, input {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
+    background: rgba( 255, 255, 255, 0.35 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 5px );
+-webkit-backdrop-filter: blur( 5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 /* Styling for table and form inputs */
@@ -43,7 +50,7 @@ input[type="email"], input[type="password"] {
 }
 
 input[type="submit"] {
-    width: 100%;
+    width: 20%;
     padding: 10px;
     border: none;
     background-color: #4CAF50;
@@ -51,6 +58,7 @@ input[type="submit"] {
     font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 40%;
 }
 
 input[type="submit"]:hover {

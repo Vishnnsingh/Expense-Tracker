@@ -144,9 +144,8 @@ function updatedata(){
 }
 
 // Render Polar Area Chart
-
 function renderChart() {
-    const categories = ["Utilitis", "Entertainment", "Food", "Study", "Medical"];
+    const categories = ["Utilities", "Entertainment", "Food", "Study", "Medical"];
     const categoryTotals = categories.map(cat => {
         return playerList
             .filter(player => player.country === cat)

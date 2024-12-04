@@ -1,0 +1,52 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic HTML Loading</title>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <nav>
+    <button class="menu-btn" data-file="home.html">Home</button>
+    <button class="menu-btn" data-file="footer.html">Footer</button>
+    <button class="menu-btn" data-file="hero.html">Hero</button>
+  </nav>
+
+  <!-- Content Area -->
+  <div id="content" style="margin-top: 20px;">
+    <p>Select a menu to load its content here.</p>
+  </div>
+
+  <!-- Script -->
+  <script>
+    // Select all menu buttons
+    const menuButtons = document.querySelectorAll('.menu-btn');
+    const contentDiv = document.getElementById('content');
+
+    // Attach click event listeners to each button
+    menuButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        const file = button.getAttribute('data-file'); // Get the file name
+
+        try {
+          // Fetch the HTML content of the file
+          const response = await fetch(file);
+          if (!response.ok) throw new Error(`Error fetching ${file}: ${response.statusText}`);
+          const html = await response.text();
+
+          // Replace the content inside the content div
+          contentDiv.innerHTML = html;
+        } catch (error) {
+          console.error(error);
+          contentDiv.innerHTML = `<p style="color: red;">Failed to load content.</p>`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
